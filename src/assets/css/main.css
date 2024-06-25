@@ -1,0 +1,21 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+  font-family: 'Open Sans Variable', sans-serif;
+}
+
+body {
+  @apply bg-surface-0 text-surface-800 dark:bg-surface-700 dark:text-surface-0;
+}
+
+.sidenav-loggedout {
+  @apply md:min-w-[30%] lg:min-w-[35%] xl:min-w-[45%];
+}
+
+.sidenav-loggedin {
+  @apply min-w-72 lg:min-w-80;
+}

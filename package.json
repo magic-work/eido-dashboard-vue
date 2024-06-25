@@ -1,0 +1,36 @@
+{
+  "name": "vue-template",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:e2e": "start-server-and-test preview http://localhost:5173 'cypress run --e2e'",
+    "test:e2e:dev": "start-server-and-test 'vite dev --port 5173' http://localhost:5173 'cypress open --e2e'",
+    "test:unit": "cypress run --component",
+    "test:unit:dev": "cypress open --component"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.0.17",
+    "@fontsource-variable/open-sans": "^5.0.28",
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "axios": "^1.6.7",
+    "firebase": "^10.8.1",
+    "pinia": "^2.1.7",
+    "primevue": "^3.49.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "autoprefixer": "^10.4.17",
+    "cypress": "^13.6.3",
+    "postcss": "^8.4.35",
+    "start-server-and-test": "^2.0.3",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.11"
+  },
+  "packageManager": "yarn@4.1.1"
+}
