@@ -1,14 +1,15 @@
 <template>
 
-  <div v-if="pdfs" >
+  <div v-if="pdfs">
     <PDFUploader />
-    <span>{{ pdfs.length }} PDFs</span>
+    <span class="text-sm text-surface-400">{{ pdfs.length }} PDFs</span>
     <ul class="space-y-6">
       <li v-for="pdf in pdfs" :key="pdf._id">
-        <a @click="downloadPDF(pdf.pdf.public_url)" class="flex hover:bg-surface-50 justify-between items-center shadow-md p-4 rounded outline outline-1 outline-surface-200">
+        <a @click="downloadPDF(pdf.pdf.public_url)"
+          class="flex hover:bg-surface-50 justify-between items-center shadow-md p-4 rounded outline outline-1 outline-surface-200">
           <div class="flex items-center gap-4">
             <i class="fa fa-file-pdf" />
-            <span>{{  pdf.title }}</span>
+            <span>{{ pdf.title }}</span>
           </div>
         </a>
       </li>
@@ -28,7 +29,7 @@ patientStore.fetchPDFs();
 
 const pdfs = computed(() => patientStore.getPDFs);
 
-const downloadPDF =  async(pdfURL) => {
+const downloadPDF = async (pdfURL) => {
   const response = await fetch(pdfURL, {
     method: 'GET',
     headers: {

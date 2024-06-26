@@ -7,7 +7,7 @@
 
 	<ul class="my-10">
 		<li v-for="patient in patientStore.getPatients" >
-			<router-link :to="`/patients/${patient._id}`"  class="flex justify-between items-center shadow-md p-4 rounded outline outline-1 outline-surface-200">
+			<router-link :to="`/patients/${patient._id}`"  class="flex mb-3 justify-between items-center shadow-md p-4 rounded outline outline-1 outline-surface-200">
 				<div class="flex flex-col">
 					<span class="font-bold">{{  patient.name }}</span>
 					<span>{{  patient.additional_info }}</span>

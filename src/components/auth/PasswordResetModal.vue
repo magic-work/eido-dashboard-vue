@@ -33,13 +33,10 @@ const email = ref('');
 const sending = ref(false);
 const toast = useToast();
 
-
 const handlePasswordReset = async () => {
-
   sending.value = true;
   const toastResponse = await authStore.passwordReset(email.value)
   toast.add(toastResponse);
-
   sending.value = false;
   visible.value = false;
 }

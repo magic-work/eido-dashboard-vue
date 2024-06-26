@@ -33,7 +33,7 @@ const uploading = ref(false);
 const handleUpload = async (event) => {
   const file = event.files[0];
   if (!pdfTitle.value) {
-    toast.add({ severity: 'info', summary: "Problem sending the verification email", detail: 'Please enter a title for the PDF', life: 5000 })
+    toast.add({ severity: 'info', summary: "PDF not uploaded", detail: 'Please enter a title for the PDF', life: 5000 })
     return;
   }
   if (file && file.type === "application/pdf") {
