@@ -12,7 +12,8 @@
 					<span class="font-bold">{{  patient.name }}</span>
 					<span>{{  patient.additional_info }}</span>
 				</div>
-				<Badge severity="secondary" :value="`${patient.pdfs.length} documents`" />
+
+				<Badge severity="warning" :value="`${patient.pdfs.length}`" />
 			</router-link>
 		</li>
 	</ul>
