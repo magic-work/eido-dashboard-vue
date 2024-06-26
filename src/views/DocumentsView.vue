@@ -5,13 +5,13 @@
     <span class="text-sm text-surface-400">{{ pdfs.length }} PDFs</span>
     <ul class="space-y-6">
       <li v-for="pdf in pdfs" :key="pdf._id">
-        <a @click="downloadPDF(pdf.pdf.public_url)"
-          class="flex hover:bg-surface-50 justify-between items-center shadow-md p-4 rounded outline outline-1 outline-surface-200">
-          <div class="flex items-center gap-4">
+        <Button @click="downloadPDF(pdf.pdf.public_url)" outlined severity="secondary"
+          class="flex w-full justify-between items-center">
+          <div class="flex items-center gap-4 ">
             <i class="fa fa-file-pdf" />
             <span>{{ pdf.title }}</span>
           </div>
-        </a>
+        </Button>
       </li>
     </ul>
   </div>
@@ -20,6 +20,7 @@
 
 <script setup>
 import { computed } from 'vue';
+import Button from 'primevue/button';
 import PDFUploader from '@/components/PDFUploader.vue';
 import { usePatientStore } from "@/stores/patient.store";
 

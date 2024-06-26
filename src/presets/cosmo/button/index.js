@@ -55,12 +55,12 @@ export default {
             {
                 'text-white dark:text-surface-900': props.severity === 'secondary' && !props.text && !props.outlined && !props.plain,
                 'bg-surface-500 dark:bg-surface-400': props.severity === 'secondary' && !props.text && !props.outlined && !props.plain,
-                'border border-surface-500 dark:border-surface-400': props.severity === 'secondary' && !props.text && !props.outlined && !props.plain
+                'border border-surface-200 dark:border-surface-400': props.severity === 'secondary' && !props.text && !props.outlined && !props.plain
             },
             // Secondary Text Button
             { 'text-surface-500 dark:text-surface-300': props.text && props.severity === 'secondary' && !props.plain },
             // Secondary Outlined Button
-            { 'text-surface-500 dark:text-surface-300 border border-surface-500 hover:bg-surface-300/20': props.outlined && props.severity === 'secondary' && !props.plain },
+            { 'text-surface-500 dark:text-surface-300 border border-surface-300 hover:bg-surface-300/20': props.outlined && props.severity === 'secondary' && !props.plain },
 
             // Success Button
             {
