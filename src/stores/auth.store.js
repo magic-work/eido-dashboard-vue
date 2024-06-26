@@ -153,17 +153,7 @@ export const useAuthStore = defineStore({
     },
 
     async deleteUser() {
-      try {
-        await deleteUserAccount(this.user);
-        await this.signOut();
-        this.user = null;
-        return { severity: 'success', summary: 'Account Deleted', detail: `Your user account was deleted successfully.`, life: 3000 }
-      }
-      catch (error) {
-        const authErrorMessage = getFirebaseErrorMessage(error.code);
-        console.error('Delete user error:', error.message);
-        return { severity: 'error', summary: 'Account Deletion Failed', detail: authErrorMessage, life: 5000 }
-      }
+      return { severity: 'error', summary: 'Account not deleted', detail: `This is a test application and won't live very long. Account deletion is not possible.`, life: 3000 }
     }
   }
 

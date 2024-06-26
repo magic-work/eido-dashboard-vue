@@ -39,7 +39,7 @@ const props = defineProps({
   },
   inputType: {
     type: String,
-    required: true
+    default: 'text'
   },
   placeholder: {
     type: String,

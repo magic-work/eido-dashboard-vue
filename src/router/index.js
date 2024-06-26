@@ -1,27 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.store';
-import HomeView from '@/views/HomeView.vue'
-import MessagesView from '@/views/MessagesView.vue'
+import PatientIndexView from '@/views/PatientIndexView.vue'
+import PatientDetailView from '@/views/PatientDetailView.vue'
+import DocumentsView from '@/views/DocumentsView.vue'
 import ProfileView from '@/views/AuthViews/ProfileView.vue'
 import LoginView from '@/views/AuthViews/LoginView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
-
-const requiresVerifiedEmail = import.meta.env.VITE_REQUIRES_VERIFIED_EMAIL === 'true';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'HomeView',
-      component: HomeView,
-      meta: { requiresAuth: true, requiresVerifiedEmail: requiresVerifiedEmail},
+      name: 'PatientIndexView',
+      component: PatientIndexView,
+      meta: { requiresAuth: true, parentView: 'PatientIndexView'},
     },
     {
-      path: '/messages',
-      name: 'MessagesView',
-      component: MessagesView,
-      meta: { requiresAuth: true, requiresVerifiedEmail: requiresVerifiedEmail},
+      path: '/patients/:id',
+      name: 'PatientDetailView',
+      component: PatientDetailView,
+      meta: { requiresAuth: true, parentView: 'PatientIndexView'},
+    },
+    {
+      path: '/documents',
+      name: 'DocumentsView',
+      component: DocumentsView,
+      meta: { requiresAuth: true, parentView: 'DocumentsView'},
     },
     {
       path: '/auth',
@@ -36,7 +41,7 @@ const router = createRouter({
           path: 'profile',
           name: 'ProfileView',
           component: ProfileView,
-          meta: { requiresAuth: true, requiresVerifiedEmail: requiresVerifiedEmail},
+          meta: { requiresAuth: true},
         },
       ]
     },
@@ -55,15 +60,6 @@ router.beforeEach(async (to, from, next) => {
 
   if (!authStore.user)
     await authStore.checkForAuthenticatedUser();
-
-  const requiresEmailVerification = to.matched.some(record => record.meta.requiresVerifiedEmail);
-
-  if (requiresEmailVerification && authStore.user && !authStore.user.emailVerified) {
-    authStore.setEmailVerificationModal(true);
-    next(false);
-    return;
-  }
-  authStore.setEmailVerificationModal(false);
 
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 

@@ -14,7 +14,6 @@
         <Navbar class="md:hidden w-full" />
       </div>
       <div class="flex flex-1 overflow-auto ">
-
         <main class="p-3 md:p-5 w-full ">
           <slot />
         </main>
@@ -24,16 +23,13 @@
     <div class="fixed inset-0 z-50 hidden md:flex">
       <div :class="!user ? 'sidenav-loggedout' : 'sidenav-loggedin'"
         class="transition-all origin-left ease-in-out duration-1000 flex flex-col bg-surface-50 dark:bg-surface-900">
-
           <div class="flex h-full flex-col overflow-y-auto border-r">
-            <div v-if="!user" :class="!user ? 'opacity-100 stock-img' : 'stock-img opacity-10'"
-              class="transition-all duration-1000 mb-10 flex h-full items-center rounded-lg px-3 py-2">
+            <div v-if="!user" class="stock-img transition-all duration-1000 h-full ">
             </div>
             <div v-else>
               <Sidenav />
             </div>
           </div>
-
       </div>
       <div class="flex flex-col flex-1 overflow-auto">
         <Navbar class="hidden md:block w-full" />

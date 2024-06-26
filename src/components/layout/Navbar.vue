@@ -34,8 +34,8 @@ const avatarImage = computed(() => {
 
 const items = ref([
   {
-    label: 'My Account',
-    icon: 'fa-solid fa-user',
+    label: 'Account',
+    icon: 'fa-solid fa-cog',
     command: async () => {
       router.push({ name: 'ProfileView' });
     }

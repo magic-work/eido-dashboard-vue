@@ -91,9 +91,6 @@ const confirmDeleteUser = async () => {
       const toastResponse = await authStore.deleteUser()
       router.push({ name: 'LoginView' });
       toast.add(toastResponse);
-    },
-    reject: () => {
-      console.log('Delete modal was cancelled.')
     }
   });
 }

@@ -7,14 +7,13 @@
 
     <template #item="{ item, props }">
       <router-link :to="item.route" v-bind="props.action"
-        :class="item.route.name == route.name ? 'bg-info-100 bg-opacity-70 text-info-700 dark:bg-surface-500 dark:text-surface-0' : ''">
+        :class="item.route.name == route.meta.parentView ? 'bg-primary-100 bg-opacity-70 text-primary-700 dark:bg-surface-500 dark:text-surface-0' : ''">
         <span v-bind="props.icon"></span>
         <span v-bind="props.label">{{ item.label }} </span>
       </router-link>
     </template>
   </Menu>
 
-  <LoadingIndicators />
 </template>
 
 
@@ -23,10 +22,8 @@
 import { ref, computed } from 'vue';
 import Menu from 'primevue/menu';
 import { useRoute } from "vue-router";
-import Button from 'primevue/button';
 import sideNavStyles from '@/presets/cosmo/sidenavmenu'
 import { useAuthStore } from '@/stores/auth.store';
-import LoadingIndicators from '@/components/LoadingIndicators.vue';
 
 const props = defineProps(["modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
@@ -44,19 +41,19 @@ const sideBarVisible = computed({
 
 const menuItems = ref([
   {
-    name: 'HomeView',
-    label: 'Dashboard',
-    icon: 'fa-solid fa-chart-simple',
-    route: { name: 'HomeView' },
+    name: 'PatientIndexView',
+    label: 'Patients',
+    icon: 'fa-solid fa-hand-holding-medical',
+    route: { name: 'PatientIndexView' },
     command: () => {
       sideBarVisible.value = false;
     }
   },
   {
-    name: 'MessagesView',
-    label: 'Messages',
-    icon: 'fa-solid fa-message',
-    route: { name: 'MessagesView' },
+    name: 'DocumentsView',
+    label: 'Document Index',
+    icon: 'fa-solid fa-file-pdf',
+    route: { name: 'DocumentsView' },
     command: () => {
       sideBarVisible.value = false;
     }

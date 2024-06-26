@@ -1,10 +1,22 @@
 <template>
   <div class="flex flex-col gap-2 md:gap-6 mt-3 md:mt-10">
     <img src="@/assets/images/EIDO.webp" alt="logo image" class="mx-auto w-48 dark:invert" />
-    <form @submit.prevent="handleSubmit" class="flex flex-col gap-3 md:gap-6 md:mt-10">
-      <div class="flex items-center gap-3 text-surface-400 justify-center">
-        <h2 class="text-surface-400 text-center text-sm md:text-base font-display">{{ header }}</h2>
-      </div>
+
+    <div class="text-sm  bg-blue-500/30 p-3 rounded-lg space-y-2">
+      <p>
+        This is a test application to aid in assessing John for a contract position. You may log in
+        with the credentials:
+      </p>
+      <p>
+        <strong>Email:</strong> test@eido.com <br>
+        <strong>Password:</strong> test123
+      </p>
+      <p>
+        If you prefer, you can use any google account to sign in (note that there'll be no test data in this case)
+      </p>
+    </div>
+
+    <form @submit.prevent="handleSubmit" class="flex flex-col gap-3 md:gap-3">
 
       <TextInput label="Email" identifier="emailField" v-model="formData.email" icon="fa-solid fa-at" inputType="email"
         placeholder="Enter email..." required />
@@ -13,7 +25,7 @@
 
       <PasswordResetModal />
       <div>
-        <Button :label="authenticating ? 'Authenticating...' : submitLabel" type="submit" class="w-full"
+        <Button :label="authenticating ? 'Authenticating...' : 'Log in'" type="submit" class="w-full"
           :icon="`fa-solid ${authenticating ? 'fa-solid fa-spin fa-cog' : 'fa-user'}`" size="small" />
         <div v-if="loginError" class="flex items-center gap-3 text-xs m-1 text-error">
           <i class="fa-solid fa-exclamation-circle"></i>
@@ -51,7 +63,6 @@ const router = useRouter();
 const authStore = useAuthStore();
 const loginError = computed(() => authStore.authErrorMessage);
 
-const props = defineProps(['handleSubmit', 'header', 'submitLabel', 'type']);
 
 const formData = ref({
   email: '',
@@ -73,10 +84,7 @@ const checkAuthToken = async () => {
 
 const handleSubmit = async () => {
   authenticating.value = true;
-  if (props.type === 'register')
-    await authStore.emailSignUp(formData.value.email, formData.value.password);
-  else
-    await authStore.signIn(formData.value.email, formData.value.password);
+  await authStore.signIn(formData.value.email, formData.value.password);
   await checkAuthToken();
   authenticating.value = false;
 }
