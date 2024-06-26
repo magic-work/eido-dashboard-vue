@@ -1,51 +1,10 @@
-# vue-template
+# EIDO demo dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+This Vue SPA application serves as the frontend to the `eido-api-core` repository,
+presenting a UI for tracking patient records and uploading new pdf documents.
 
-## Recommended IDE Setup
+It's a demo application to serve as the basis for a technology discussion: there's no
+real data here.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-yarn
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
-```sh
-yarn test:unit:dev # or `yarn test:unit` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-yarn test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-yarn build
-yarn test:e2e
-```
+The app is deployed on cloudflare pages at
+ [https://eido-dashboard-vue.pages.dev/](https://eido-dashboard-vue.pages.dev/).
