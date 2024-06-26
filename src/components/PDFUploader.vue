@@ -44,6 +44,7 @@ const handleUpload = async (event) => {
     const toastResponse = await patientStore.uploadPDF(formData);
     uploading.value = false;
     toast.add(toastResponse);
+    await patientStore.fetchPDFs();
   }
 };
 </script>
